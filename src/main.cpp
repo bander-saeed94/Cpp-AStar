@@ -59,7 +59,7 @@ int main(int argc, const char **argv)
     RouteModel model{osm_data};
 
     // Perform search and render results.
-    RoutePlanner route_planner{model, 10, 10, 90, 90};
+    RoutePlanner route_planner{model, 10, 90, 10, 90};
     route_planner.AStarSearch();
     Render render{model};
 
