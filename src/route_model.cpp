@@ -58,7 +58,7 @@ void RouteModel::Node::FindNeighbors()
     }
 }
 
-RouteModel::Node &RouteModel::FindClosestNode(int x, int y)
+RouteModel::Node &RouteModel::FindClosestNode(float x, float y)
 {
     Node input = Node();
     input.x = x;
