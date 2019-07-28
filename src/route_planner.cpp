@@ -1,6 +1,7 @@
 #include "route_planner.h"
 #include <algorithm>
 using std::cout;
+using std::sort;
 RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y, float end_x, float end_y): m_Model(model) {
     cout << "start_x: " << start_x << ", start_y: " << start_y << "\n";
     cout << "end_x: " << end_x << ", end_y: " << end_y << "\n";
@@ -41,4 +42,24 @@ void RoutePlanner::AStarSearch(){
 
 float RoutePlanner::CalculateHValue(const RouteModel::Node * node){
     return node->distance(*end_node);
+}
+
+bool Compare(const RouteModel::Node * a, const RouteModel::Node * b) {
+  int f1 = a->g_value + a->h_value; // f1 = g1 + h1
+  int f2 = b->g_value + b->h_value; // f2 = g2 + h2
+  return f1 > f2; 
+}
+
+RouteModel::Node * RoutePlanner::NextNode(){
+    //Sort the open_list according to the f-value, which is the sum of a node's h-value and g-value.
+    sort(open_list->begin(), open_list->end(), Compare);
+    // sort(open_list->begin(), open_list->end(), [](const auto &_1st, const auto &_2nd){
+    //     return _1st->g_value + _1st->h_value >  _2nd->g_value + _2nd->h_value;
+    // });
+    //Create a copy of the pointer to the node with the lowest f-value.
+    RouteModel::Node * copy_ptr = open_list.back();
+    //Erase that node pointer from open_list.
+    open_list.pop_back();
+    //Return the pointer copy.
+    return copy_ptr;
 }

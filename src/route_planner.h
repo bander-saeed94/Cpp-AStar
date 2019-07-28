@@ -24,8 +24,10 @@ private:
   RouteModel::Node *start_node = nullptr;
   RouteModel::Node *end_node = nullptr;
   float distance = 0.0; //will hold the total distance for the route that A* search finds from start_node to end_node
+  vector<RouteModel::Node *> open_list;
   vector<RouteModel::Node> ConstructFinalPath(RouteModel::Node * current_node);
   float CalculateHValue(const RouteModel::Node *);
+  RouteModel::Node * NextNode();
 };
 
 #endif
