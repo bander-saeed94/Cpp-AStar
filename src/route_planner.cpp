@@ -52,14 +52,17 @@ bool Compare(const RouteModel::Node * a, const RouteModel::Node * b) {
 
 RouteModel::Node * RoutePlanner::NextNode(){
     //Sort the open_list according to the f-value, which is the sum of a node's h-value and g-value.
-    sort(open_list->begin(), open_list->end(), Compare);
-    // sort(open_list->begin(), open_list->end(), [](const auto &_1st, const auto &_2nd){
-    //     return _1st->g_value + _1st->h_value >  _2nd->g_value + _2nd->h_value;
-    // });
+    sort(open_list.begin(), open_list.end(), Compare);
     //Create a copy of the pointer to the node with the lowest f-value.
     RouteModel::Node * copy_ptr = open_list.back();
     //Erase that node pointer from open_list.
     open_list.pop_back();
     //Return the pointer copy.
     return copy_ptr;
+    // sort(open_list->begin(), open_list->end(), [](const auto &_1st, const auto &_2nd){
+    //     return _1st->g_value + _1st->h_value >  _2nd->g_value + _2nd->h_value;
+    // });
+    // RouteModel::Node * lowest_node = open_list.back();
+    // open_list.erase(open_list.begin());
+    // return lowest_node;
 }
