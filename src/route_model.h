@@ -45,7 +45,7 @@ public:
 
   // Add public RouteModel variables and methods here.
   RouteModel(const vector<std::byte> &xml);
-  RouteModel::Node &FindClosestNode(int x, int y);
+  RouteModel::Node &FindClosestNode(float x, float y);
   vector<Node> path; // This variable will eventually store the path that is found by the A* search.
   vector<Node> &SNodes() { return m_Nodes; }
   unordered_map<int, vector<const Model::Road *>> &GetNodeToRoadMap()
