@@ -70,9 +70,9 @@ RouteModel::Node * RoutePlanner::NextNode(){
     // //Return the pointer copy.
     // return copy_ptr;
     sort(open_list.begin(), open_list.end(), [](const auto &_1st, const auto &_2nd){
-        return _1st->g_value + _1st->h_value >  _2nd->g_value + _2nd->h_value;
+        return _1st->g_value + _1st->h_value <  _2nd->g_value + _2nd->h_value;
     });
-    RouteModel::Node * lowest_node = open_list.back();
+    RouteModel::Node * lowest_node = open_list.front();
     open_list.erase(open_list.begin());
     return lowest_node;
 }
