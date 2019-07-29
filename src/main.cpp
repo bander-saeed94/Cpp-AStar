@@ -54,13 +54,13 @@ int main(int argc, const char **argv)
     // TODO: Declare floats `start_x`, `start_y`, `end_x`, and `end_y` and get
     float start_x, start_y, end_x, end_y;
     std::cout << "enter x for start point [0-100]:" << std::endl;
-    std::in >> start_x;
+    std::cin >> start_x;
     std::cout << "enter y for start point [0-100]:" << std::endl;
-    std::in >> start_y;
+    std::cin >> start_y;
     std::cout << "enter x for end point [0-100]:" << std::endl;
-    std::in >> end_x;
+    std::cin >> end_x;
     std::cout << "enter y for end point [0-100]:" << std::endl;
-    std::in >> end_y;
+    std::cin >> end_y;
     // user input for these values using std::cin. Pass the user input to the
     // RoutePlanner object below.
 
